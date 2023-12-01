@@ -1,0 +1,62 @@
+<div></div>
+
+<script>
+    // this 키워드를 알아보자 1. 함수와 Object에서 사용하면?
+
+    // // javascript를 좀 더 엄격하게 쓰고 싶다면 -> use strict
+    // 'use strict';
+
+    // this -> 그냥 아무데서나 쓰거나 일반(전역) 함수에서 쓰면 {window}
+    console.log(this);  // -> Window
+    func();     // -> Window
+
+    function func() {
+        console.log(this);
+    }
+
+    var obj = {
+        data: 'kim',
+        funct: function() {
+            console.log('안녕');
+            // 오브젝트 내 함수안에서 쓰면 '그 함수를 가지고 있는 오브젝트'를 뜻함
+            console.log(this);  // funct를 포함하고 있는 오브젝트 -> obj
+        }
+    }
+
+    // 예제
+    var obj2 = {
+        data : {
+            함수 : function() {
+                console.log(this);
+            }
+        }
+    }
+
+    obj2.data.함수();   // {함수: f}
+
+    // 신 문법 Arrow Function 특징: this 값을 함수 밖에 있던것 그대로 씀
+    var obj3 = {
+        data : {
+            함수 : () => {
+                console.log(this);      // -> window
+            }
+        }
+    }
+
+    obj3.data.함수()
+
+    // 오브젝트 안에 함수 넣을 때 신문법
+    var obj4 = {
+        data : {
+            함수() {
+                console.log(this);
+            }
+        }
+    }
+
+    // window의 비밀 
+    // 함수나 변수를 전역공간에서 만들면 {window}에 보관됨
+    // 즉 window는 전역변수 보관소(global object) -> 함수나 변수를 만들면 global object를 자동으로 추가된다
+    window.func();
+ 
+</script>
