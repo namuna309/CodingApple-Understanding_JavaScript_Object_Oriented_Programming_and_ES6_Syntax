@@ -86,7 +86,7 @@
         func: function() {
             console.log(this);      // this -> obj6
             obj6.names.forEach(() => {
-                console.log(this);      // arraow function 안에서의 this는 따로 정해진 값이 아닌 this 값 그댈 재사용 -> obj6
+                console.log(this);      // arraow function 안에서의 this는 따로 정해진 값이 아닌 언제나 상위 스코프의 this 값을 그대로 재사용 -> obj6
             })
             obj6.names.forEach(function() {
                 console.log(this);      // forEach는 전역함수 이므로 window가 나온다

@@ -1,0 +1,47 @@
+<div></div>
+<button id="btn">버튼</button>
+
+<script>
+    // 일반적인 함수 문법
+    var func = function() {
+        
+    }
+
+    // arraw function
+    var func = () => {
+
+    }
+
+    // arrow function의 장점 1. 입츌력 기능을 만들경우 가독성이 높아짐
+    var func = (a) => {
+        return a + 10;
+    }
+    console.log(func(5));
+
+    // arrow function의 장점 2. 파라미터 1개면 소괄호 생략 가능 
+    var func = a => {
+        return a + 10;
+    }
+    console.log(func(5));
+
+    // arrow function의 장점 3. 코드 한줄이면 중괄호도 생략 가능 
+    var func = a => a + 10;
+    console.log(func(5));
+
+
+    // arrow function 예시 1. forEach
+    [1, 2, 3, 4].forEach( a => console.log(a) );
+
+    // document.getElementById('btn').addEventListener('click', e => console.log(e.currentTarget));
+    document.getElementById('btn').addEventListener('click', e => console.log(this));   // 함수 내의 this 값을 변경시키지 않음 -> 상위 스코프의 this 값을 출력
+    var obj = {
+        func: () => {
+            console.log(this);
+        },
+        func2: function() {
+            console.log(this);
+        }
+    }
+    obj.func();
+    obj.func2();
+</script>
